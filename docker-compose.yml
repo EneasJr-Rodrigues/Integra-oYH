@@ -1,19 +1,20 @@
+# docker-compose.yml
 version: '3'
 
 services:
   web:
-    build: .
+    build:
+      context: .
     ports:
       - "5000:5000"
+    volumes:
+      - .:/app
     depends_on:
       - db
+
   db:
-    image: "mcr.microsoft.com/mssql/server:2019-latest"
-    container_name: "integracaoyh-web"
-    restart: unless-stopped
+    image: "postgres:latest"
     environment:
-      ACCEPT_EULA: "Y"
-      MSSQL_PID: "Develop"
-      MSSQL_AGENT_ENABLED: True
-    ports:
-      - "1433:1433"
+      POSTGRES_DB: webapp
+      POSTGRES_USER: webapp_user
+      POSTGRES_PASSWORD: webapp_password

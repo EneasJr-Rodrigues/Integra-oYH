@@ -3,20 +3,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask SQL CRUD</title>
+    <title>WebApp</title>
 </head>
 <body>
-    <h1>Items</h1>
+    <h1>Users:</h1>
     <ul>
-        {% for item in items %}
-            <li>{{ item.name }} <a href="{{ url_for('delete', id=item.id) }}">Delete</a></li>
+        {% for user in users %}
+            <li>{{ user.username }}</li>
         {% endfor %}
     </ul>
-    <form method="post" action="{{ url_for('add') }}">
-        <label for="name">Item Name:</label>
-        <input type="text" name="name" required>
-        <button type="submit">Add Item</button>
-    </form>
 </body>
 </html>
